@@ -1,37 +1,21 @@
 package CH1;
 
 public class ShippingInfo {
-    private String receiverName;
-    private String receiverPhoneNumber;
-    private String shippingAddress1;
-    private String getShippingAddress2;
-    private String shippingZipcode;
+    // 기존의 합쳐져있던 요소들을 두 밸류타입(받는사람, 주소)으로 분리
+    // -> 활용함으로써 shippingInfo가 두 밸류로 이루어짐을 알기 쉬움.
+    private Receiver receiver;
+    private Address address;
 
-    public ShippingInfo(String receiverName, String receiverPhoneNumber, String shippingAddress1, String getShippingAddress2, String shippingZipcode) {
-        this.receiverName = receiverName;
-        this.receiverPhoneNumber = receiverPhoneNumber;
-        this.shippingAddress1 = shippingAddress1;
-        this.getShippingAddress2 = getShippingAddress2;
-        this.shippingZipcode = shippingZipcode;
+    public ShippingInfo(Receiver receiver, Address address) {
+        this.receiver = receiver;
+        this.address = address;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public Receiver getReceiver() {
+        return receiver;
     }
 
-    public String getReceiverPhoneNumber() {
-        return receiverPhoneNumber;
-    }
-
-    public String getShippingAddress1() {
-        return shippingAddress1;
-    }
-
-    public String getGetShippingAddress2() {
-        return getShippingAddress2;
-    }
-
-    public String getShippingZipcode() {
-        return shippingZipcode;
+    public Address getAddress() {
+        return address;
     }
 }

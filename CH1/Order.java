@@ -52,13 +52,8 @@ public class Order {
 
 //     7. 출고를 하면 배송지를 변경할 수 없다.
     public void changeShippingInfo(ShippingInfo newShippingInfo) {
-        if (!isShippingInfoChangeable() ) {
-            throw new IllegalStateException("can't change shipping in " + state);
-        } this.shippingInfo = newShippingInfo;
-    }
-    private boolean isShippingInfoChangeable() {
-        return state == OrderState.PAYMENT_WAITING ||
-                state == OrderState.PREPARING;
+        verifyNotYetShipped();
+        setShippingInfo(newShippingInfo);
     }
 
 //    8. 출고 전에 주문을 취소할 수 있다.

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class CancelOrderService {
     private DroolsRules ruleEngine;
 
+    // 응용 서비스는 트랜잭션(도메인의 상태 변경)을 관리한다.
     @Transactional
     public void cancelOrder(String orderId){
         Order order = findOrderById(orderId);

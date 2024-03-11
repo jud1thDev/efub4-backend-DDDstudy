@@ -23,4 +23,5 @@ public class Address {
     public String getShippingZipcode() {
         return shippingZipcode;
     }
+
 }

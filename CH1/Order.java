@@ -8,6 +8,7 @@ import java.util.List;
 //식별자를 통해서 엔티티 객체들 간의 구별이 가능하다!
 
 public class Order {
+//    private OrderNo id;
     private String orderNumber;
     @Override
     public boolean equals(Object obj) {
@@ -38,10 +39,19 @@ public class Order {
     private ShippingInfo shippingInfo;
     private List<OrderLine> orderLines;
     private Money totalAmounts;
+    private Orderer orderer;
 
-    public Order(List<OrderLine> orderLines, ShippingInfo shippingInfo) {
+    Order order = new Order(orderer, orderLines, shippingInfo, OrderState.PREPARING);
+
+    public Order(Orderer orderer, List<OrderLine> orderLines, ShippingInfo shippingInfom, OrderState orderState) {
+        setOrderer(orderer);
         setOrderLines(orderLines);
         setShippingInfo(shippingInfo);
+    }
+
+    private void setOrderer(Orderer orderer) {
+        if (orderer == null) throw new IllegalStateException("no order");
+        this.orderer = orderer;
     }
 
     private void setOrderLines(List<OrderLine> orderLines) {
@@ -51,13 +61,19 @@ public class Order {
     }
 
 //    5. 주문할 때 배송지 정보를 반드시 지정해야 한다.
-    public void setShippingInfo(ShippingInfo shippingInfo) {
+    public void setShippingInfo(ShippingInfo newShipping) {
         if (shippingInfo == null)
             throw new IllegalStateException("no ShippingInfo");
         this.shippingInfo = shippingInfo;
     }
 
-//    1. 최소 한 종류 이상의 상품을 주문해야 한다.
+    // set메서드의 무분별한 사용 금지 : 각 의미가 다르다.
+    // setShippingInfo는 (기존의) 정보 새로 변경, setOrderState는 단순히 값만 설정하는 것
+    public void setOrderState(OrderState state) {
+        this.state = state;
+    }
+
+    //    1. 최소 한 종류 이상의 상품을 주문해야 한다.
     private void verifyAtLeastOneOrMoreOrderLines(List<OrderLine> orderLines) {
         if (orderLines == null || orderLines.isEmpty()){
             throw new IllegalStateException("no OrderLine");
@@ -66,13 +82,11 @@ public class Order {
 
 //    3. 총 주문 금액은 각 상품의 구매 가격 합을 모두 더한 금액이다.
     private void calculateTotalAmounts() {
-        // stream을 통해 orderLines의 각 요소에 대한 작업 수행
-        int sum = orderLines.stream()
+        // stream을 통해 orderLines의 각 요소에 대한 작업 수행v
+        this.totalAmounts = new Money(orderLines.stream()
                 .mapToInt(x -> x.getAmounts())
-                .sum();
-        this.totalAmounts = new Money(sum);
+                .sum());
     }
-
 
     public void changeShipped(){
     }

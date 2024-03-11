@@ -1,4 +1,4 @@
-package CH1;
+package ewhabackendDDDstudy.CH1;
 
 public class Receiver {
     // 받는 사람

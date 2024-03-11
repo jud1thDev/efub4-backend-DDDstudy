@@ -1,4 +1,4 @@
-package CH1;
+package ewhabackendDDDstudy.CH1;
 
 public class ShippingInfo {
     // 기존의 합쳐져있던 요소들을 두 밸류타입(받는사람, 주소)으로 분리

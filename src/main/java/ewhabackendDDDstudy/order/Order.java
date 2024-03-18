@@ -1,4 +1,6 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order;
+
+import ewhabackendDDDstudy.domain.*;
 
 import java.util.List;
 
@@ -11,6 +13,13 @@ import java.util.List;
 public class Order {
 //    private OrderNo id;
     private String orderNumber;
+    private OrderState state;
+    private ShippingInfo shippingInfo;
+//    private List<OrderLine> orderLines;
+    private OrderLines orderLines;
+    private Money totalAmounts;
+    private Orderer orderer;
+
     @Override
     public boolean equals(Object obj) {
         if ( this == obj) return true;
@@ -29,24 +38,60 @@ public class Order {
         return result;
     }
 
-    private OrderState state;
-    private ShippingInfo shippingInfo;
-    private List<OrderLine> orderLines;
-    private Money totalAmounts;
-    private Orderer orderer;
-
     Order order = new Order(orderer, orderLines, shippingInfo, OrderState.PREPARING);
 
-    public Order(Orderer orderer, List<OrderLine> orderLines, ShippingInfo shippingInfom, OrderState orderState) {
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public OrderState getState() {
+        return state;
+    }
+
+    public ShippingInfo getShippingInfo() {
+        return shippingInfo;
+    }
+
+    public OrderLines getOrderLines() {
+        return orderLines;
+    }
+
+    public Money getTotalAmounts() {
+        return totalAmounts;
+    }
+
+    public Orderer getOrderer() {
+        return orderer;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public OrderLines getLines() {
+        return lines;
+    }
+
+    public Order(Orderer orderer, List<OrderLine> orderLines, ShippingInfo shippingInfo, OrderState orderState) {
         setOrderer(orderer);
         setOrderLines(orderLines);
         setShippingInfo(shippingInfo);
     }
 
+//    set메서드는 private로 만들어라. 애그리거트 외부에서 내부 상태를 함부로 바꾸지 못하도록..
     private void setOrderer(Orderer orderer) {
-        if (orderer == null) throw new IllegalStateException("no order");
+        if (orderer == null) throw new IllegalStateException();
         this.orderer = orderer;
     }
+
+//    OrderLines의 기눙 : changeLines(), getTotalAmounts()
+    public void changeOrderLines(List<OrderLine> newLines){
+        orderLines.changeOrderLines(newLines);
+        this.totalAmounts = orderLines.getTotalAmounts();
+    }
+
+//    getOrderlines()를 통해 애그리거트 외부에서 Orderlines의 기능 수행이 가능해진다!
+    OrderLines lines = order.getOrderLines();
 
     private void setOrderLines(List<OrderLine> orderLines) {
         verifyAtLeastOneOrMoreOrderLines(orderLines);
@@ -65,7 +110,7 @@ public class Order {
         this.state = state;
     }
 
-    //    1. 최소 한 종류 이상의 상품을 주문해야 한다.
+//    1. 최소 한 종류 이상의 상품을 주문해야 한다.
     private void verifyAtLeastOneOrMoreOrderLines(List<OrderLine> orderLines) {
         if (orderLines == null || orderLines.isEmpty()){
             throw new IllegalStateException("no OrderLine");
@@ -74,7 +119,7 @@ public class Order {
 
 //    3. 총 주문 금액은 각 상품의 구매 가격 합을 모두 더한 금액이다.
     private void calculateTotalAmounts() {
-        // stream을 통해 orderLines의 각 요소에 대한 작업 수행v
+        // stream을 통해 orderLines의 각 요소에 대한 작업 수행
         this.totalAmounts = new Money(orderLines.stream()
                 .mapToInt(x -> x.getAmounts())
                 .sum());

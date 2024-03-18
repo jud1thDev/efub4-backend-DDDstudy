@@ -1,4 +1,7 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order;
+
+import ewhabackendDDDstudy.domain.*;
+
 
 // 주문항목
 public class OrderLine {
@@ -18,7 +21,7 @@ public class OrderLine {
     }
 
     //    4. 각 상품의 구매 가격 합은 상품 가격에 구매 개수를 곱한 값이다.
-    private int calculateAmounts() {
+    private Money calculateAmounts() {
         return price*quantity;
     }
 

@@ -2,7 +2,7 @@ package ewhabackendDDDstudy.service;
 
 import ewhabackendDDDstudy.domain.Customer;
 import ewhabackendDDDstudy.domain.Money;
-import ewhabackendDDDstudy.domain.OrderLine;
+import ewhabackendDDDstudy.order.OrderLine;
 
 import java.util.List;
 

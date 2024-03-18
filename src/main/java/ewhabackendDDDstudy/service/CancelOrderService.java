@@ -1,6 +1,6 @@
 package ewhabackendDDDstudy.service;
 
-import ewhabackendDDDstudy.domain.Order;
+import ewhabackendDDDstudy.order.Order;
 import jakarta.transaction.Transactional;
 
 import org.springframework.stereotype.Service;

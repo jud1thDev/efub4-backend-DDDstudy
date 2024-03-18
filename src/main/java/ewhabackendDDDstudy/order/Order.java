@@ -1,9 +1,11 @@
 package ewhabackendDDDstudy.order;
 
 import ewhabackendDDDstudy.domain.*;
+import jakarta.persistence.Entity;
 
 import java.util.List;
 
+@Entity
 public class Order {
     private OrderNo id;
     private String orderNumber;

@@ -4,12 +4,6 @@ import ewhabackendDDDstudy.domain.*;
 
 import java.util.List;
 
-// 3장. 애그리거트
-// 애그리거트는 복잡한 모델을 관리하는 기준을 준다.
-// 애그리거트에 속한 구성요소는 보통 라이프사이클을 함께한다.
-// 언뜻 생각하면, prooduct 하위에 review가 존재한다 생각할 수 있지만 이 둘의 "생성, 변경시기"는 다르므로 이 둘은 다른 애그리거트에 속한다.
-// 실무에서 2개 이상의 엔티티를 가지는 애그리거트는 드물다.
-
 public class Order {
 //    private OrderNo id;
     private String orderNumber;

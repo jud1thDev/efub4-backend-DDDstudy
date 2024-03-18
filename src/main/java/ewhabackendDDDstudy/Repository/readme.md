@@ -555,16 +555,14 @@ private Long id;
 
 ### 도메인 구현과 DIP
 - DIP 위반 <br>
-이 장에서 구현한 리포지터리는 DIP 원칙을 어기고 있다.<br>
 
+이 장에서 구현한 리포지터리는 DIP 원칙을 어기고 있다.<br>
 엔티티는 @Entity, @Table, @Id, @Column 등 JPA에 특화된 애노테이션을 사용한다.<br>
 리포지토리는 스프링 데이터 JPA의 Repository 인터페이스를 상속하고 있다.<br>
 -> 즉, 도메인 영역에서 구현 기술인 인프라에 의존하고 있다.<br>
-<br><br>
- 
+<br>
 
 이런 부분을 방지하려면, 도메인 영역에서는 JPA에 대한 의존을 없애고,<br>
-
 JpaArticleRepository, JpaArticle등 인프라를 위한 객체를 생성해야 한다.<br>
 
  

@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.CH2;
+package ewhabackendDDDstudy.service;
 
 import java.util.List;
 

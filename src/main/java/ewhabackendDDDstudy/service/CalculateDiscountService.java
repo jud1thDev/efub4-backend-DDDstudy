@@ -1,8 +1,8 @@
-package ewhabackendDDDstudy.CH2;
+package ewhabackendDDDstudy.service;
 
-import ewhabackendDDDstudy.CH1.Customer;
-import ewhabackendDDDstudy.CH1.Money;
-import ewhabackendDDDstudy.CH1.OrderLine;
+import ewhabackendDDDstudy.domain.Customer;
+import ewhabackendDDDstudy.domain.Money;
+import ewhabackendDDDstudy.domain.OrderLine;
 
 import java.util.List;
 

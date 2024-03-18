@@ -1,28 +1,23 @@
-package ewhabackendDDDstudy.CH1;
+package ewhabackendDDDstudy.domain;
 
 import java.util.List;
 
-// 1장. 도메인 모델 시작하기
-
-//도메인 : 소프트웨어로 해결하고자 하는 문제 영역
-//식별자를 통해서 엔티티 객체들 간의 구별이 가능하다!
+// 3장. 애그리거트
+// 애그리거트는 복잡한 모델을 관리하는 기준을 준다.
+// 애그리거트에 속한 구성요소는 보통 라이프사이클을 함께한다.
+// 언뜻 생각하면, prooduct 하위에 review가 존재한다 생각할 수 있지만 이 둘의 "생성, 변경시기"는 다르므로 이 둘은 다른 애그리거트에 속한다.
+// 실무에서 2개 이상의 엔티티를 가지는 애그리거트는 드물다.
 
 public class Order {
 //    private OrderNo id;
     private String orderNumber;
     @Override
     public boolean equals(Object obj) {
-        // 현재 객체와 비교 대상 객체가 동일한 객체인지 확인
         if ( this == obj) return true;
-        // 비교 대상 객체가 null이면, 두 객체는 동일할 수 없으므로 false
         if ( obj == null) return false;
-        // 비교 대상 객체의 클래스 타입이 Order 클래스가 아니면, 두 객체는 동일할 수 없으므로 false
         if (obj.getClass() != Order.class) return false;
-        // 위의 조건들을 모두 통과했다면, obj를 Order 타입으로 강제 형변환
         Order other = (Order)obj;
-        // 현재 객체의 orderNumber 필드가 null이면, 이 객체는 유효한 비교 대상이 아니므로 false
         if(this.orderNumber == null) return false;
-        // 현재 객체의 orderNumber와 비교 대상 객체의 orderNumber를 비교하여 같으면 true, 다르면 false를 반환
         return this.orderNumber.equals(other.orderNumber);
     }
 
@@ -30,7 +25,6 @@ public class Order {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        // orderNumber가 null이면 0을 사용, 값있으면 hashcode 사용
         result = prime * result + ((orderNumber == null) ?0 : orderNumber.hashCode());
         return result;
     }
@@ -67,8 +61,6 @@ public class Order {
         this.shippingInfo = shippingInfo;
     }
 
-    // set메서드의 무분별한 사용 금지 : 각 의미가 다르다.
-    // setShippingInfo는 (기존의) 정보 새로 변경, setOrderState는 단순히 값만 설정하는 것
     public void setOrderState(OrderState state) {
         this.state = state;
     }

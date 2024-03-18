@@ -1,6 +1,6 @@
-package ewhabackendDDDstudy.CH2;
+package ewhabackendDDDstudy.service;
 
-import ewhabackendDDDstudy.CH1.Customer;
+import ewhabackendDDDstudy.domain.Customer;
 
 public interface CustomerRepository {
     public Customer findById(String customerId) {

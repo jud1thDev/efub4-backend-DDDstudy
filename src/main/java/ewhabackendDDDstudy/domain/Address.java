@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.CH1;
+package ewhabackendDDDstudy.domain;
 
 public class Address {
     // 주소

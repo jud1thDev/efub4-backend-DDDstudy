@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.CH2;
+package ewhabackendDDDstudy.service;
 
 public class OrderNotFoundException extends RuntimeException {
 

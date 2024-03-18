@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.CH1;
+package ewhabackendDDDstudy.domain;
 
 // 주문항목
 public class OrderLine {

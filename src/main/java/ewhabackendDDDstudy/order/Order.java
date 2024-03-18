@@ -5,7 +5,7 @@ import ewhabackendDDDstudy.domain.*;
 import java.util.List;
 
 public class Order {
-//    private OrderNo id;
+    private OrderNo id;
     private String orderNumber;
     private OrderState state;
     private ShippingInfo shippingInfo;

@@ -78,7 +78,7 @@ public class Order {
         this.orderer = orderer;
     }
 
-//    OrderLines의 기눙 : changeLines(), getTotalAmounts()
+//    OrderLines의 제공 기능 : changeLines(), getTotalAmounts()
     public void changeOrderLines(List<OrderLine> newLines){
         orderLines.changeOrderLines(newLines);
         this.totalAmounts = orderLines.getTotalAmounts();

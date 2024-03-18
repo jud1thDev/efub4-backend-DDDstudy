@@ -63,7 +63,7 @@ public class Order {
 이런 경우 AttributeConverter를 사용하면 좋다. <br>
 AttributeConverter는 다음과 같이 도메인 필드와 컬럼 데이터 간의 변환을 처리하기 위한 기능을 정의하고 있다. <br>
 
-```
+```java
 public interface AttributeConverter<X, Y> {
     Y convertToDatabaseColumn(X var1);
  
@@ -74,7 +74,7 @@ public interface AttributeConverter<X, Y> {
 
 AttributeConverter를 구현한 클래스를 보자.
 
-```
+```java
 @Converter(autoApply = true)
 public class MoneyConverter implements AttributeConverter<Money, Integer> {
  
@@ -92,7 +92,7 @@ public class MoneyConverter implements AttributeConverter<Money, Integer> {
 ```
 이렇게 AttrubuteConverter를 구현하고, @Converter(autoApply = true)를 적용하면,Money 타입에 대해 자동으로 컨버터가 적용된다.<br>
 autoApply를 false로 지정하면 특정 필드에 직접 컨버터를 지정하면 된다.
-```
+```java
 public class Order {
     @Convert(converter = MoneyConverter.class)
     @Column(name = "total_amounts")
@@ -105,7 +105,7 @@ public class Order {
 
 한 엔티티는 밸류 컬렉션을 가질 수 있다. <br>
 이런 경우 컬렉션을 따로 테이블로 빼는데, 이에 대한 매핑 설정은 다음과 같다.
-```
+```java
 @Entity
 @Table(name = "purchase_order")
 @Access(AccessType.FIELD)
@@ -137,7 +137,7 @@ public class Order {
  <br>
 
 이런 경우 컬렉션을 하나의 밸류 타입으로 묶고, AttributeConvert를 사용한다.
-```
+```java
 public class EmailSet {
  
     private Set<Email> emails = new HashSet<>();
@@ -179,7 +179,7 @@ public class EmailSetConverter implements AttributeConverter<EmailSet, String> {
   식별자라는 의미를 부각시키기 위해 식별자 자체를 밸류 타입으로 만들 수 있다.<br>
   이때, @EmbeddedId 애너테이션을 사용한다.
 
-```
+```java
 @Entity
 @Table(name = "purchase_order")
 public class Order {
@@ -242,7 +242,7 @@ JPA에서 식별자 타입은 Serializable 타입이어야 하므로 식별자�
 <br>
 엔티티는 Article하나이고, ArticleContent 밸류 타입을 다른 테이블과 매핑하기 위한 코드는 다음과 같다.
 
-```
+```java
 @Entity
 @Table(name = "article")
 @SecondaryTable(
@@ -278,7 +278,7 @@ pkJoinColumns 속성은 밸류 테이블에서 엔티티 테이블로 조인할 
 개념적으로 밸류인데 구현 기술의 한계나 팀 표준으로 인해 @Entity를 사용할 때도 있다. <br>
 
 ex) Product가 여러 Image를 갖는다.
-```
+```java
 @Entity
 @Table(name = "product")
 public class Product {
@@ -299,7 +299,7 @@ private List<Image> images = new ArrayList<>();
 JPA에서 밸류 객체의 @Embeddable 타입은 상속 매핑을 지원하지 않는다. <br>
 
 따라서, 밸류 타입에 @Entity를 이용해서 상속 매핑으로 처리해야 한다. <br>
-```
+```java
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 상속을 위한 애노테이션
 @DiscriminatorColumn(name = "image_type") // 타입 구분용 컬럼
@@ -334,7 +334,7 @@ private Long id; // 엔티티이기 때문에 식별자를 지정
  
 
 Image를 상속받은 클래스는 @Entity와 @Discriminator를 사용해서 매핑을 설정한다.
-```
+```java
 @Entity
 @DiscriminatorValue("II")
 public class InternalImage extends Image {
@@ -392,7 +392,7 @@ protected ExternalImage() {
 - @OneToMany 매핑<br>
 
 Image가 @Entity이므로 Product는 다음과 같이 @OneToMany 매핑을 사용한다.
-```
+```java
 @Entity
 @Table(name = "product")
 public class Product {
@@ -427,7 +427,7 @@ Product의 changeImages() 메서드는 Image가 밸류이기 때문에, 전체�
 현재 서비스 특성상 성능 이슈가 크티티컬<br>
 -> 밸류 컬렉션이 엔티티인 것보다는 밸류 객체인 것이 성능상 유리하다. <br>
 
-```
+```java
 @Embeddable
 public class Image {
 
@@ -448,7 +448,7 @@ public class Image {
  ```
 
 요구사항을 구현하는 데 집합 연관을 사용하는 것이 유리하다면 ID 참조를 이용한 단방향 집합 연관을 적용해 볼 수 있다.
-```
+```java
 @Entity
 @Table(name = "product")
 public class Product {
@@ -503,7 +503,7 @@ private ProductId id;
 - 삭제: 애그리거트 루트 뿐만 아니라 애그리거트에 속한 모든 객체를 삭제해야 한다. <br>
 @Embeddable 매핑은 함께 저장되고 삭제되므로 cascade 속성을 추가로 설정하지 않아도 된다. <br>
 @Entity 매핑은 cascade 속성을 사용해서 저장, 삭제 시에 함께 처리되도록 설정해야 한다. <br>
-```
+```java
 @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, // cascade 설정
 orphanRemoval = true, fetch = FetchType.LAZY)
 @JoinColumn(name = "product_id")
@@ -522,7 +522,7 @@ private List<Image> images = new ArrayList<>();
 
 식별자 생성 규칙이 있다면 별도 서비스로 식별자 생성 기능을 분리해야 한다. <br>
 
-```
+```java
 public class OrderIdService {
 
     public OrderId createId(UserId userId) {
@@ -541,7 +541,7 @@ public class OrderIdService {
 - DB를 이용한 일련번호 사용<br>
 
 DB 자동 증가 컬럼을 식별자로 사용하면 식별자 매핑에서 @GeneratedValue를 사용한다.
-```
+```java
 @Entity
 @Table(name = "article")
 public class Article {

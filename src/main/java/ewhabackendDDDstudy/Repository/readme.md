@@ -554,7 +554,7 @@ private Long id;
  
 
 ### 도메인 구현과 DIP
-- DIP 위반<br>
+- DIP 위반 <br>
 이 장에서 구현한 리포지터리는 DIP 원칙을 어기고 있다.<br>
 
 엔티티는 @Entity, @Table, @Id, @Column 등 JPA에 특화된 애노테이션을 사용한다.<br>

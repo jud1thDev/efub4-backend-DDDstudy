@@ -1,5 +1,6 @@
 package ewhabackendDDDstudy.order.command.domain;
 
+import ewhabackendDDDstudy.common.model.Money;
 import jakarta.persistence.Entity;
 
 import java.util.List;

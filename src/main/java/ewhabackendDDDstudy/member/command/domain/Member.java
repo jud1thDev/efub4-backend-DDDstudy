@@ -1,5 +1,7 @@
 package ewhabackendDDDstudy.member.command.domain;
 
+import ewhabackendDDDstudy.common.jpa.EmailSetConverter;
+import ewhabackendDDDstudy.common.model.EmailSet;
 import jakarta.persistence.*;
 import java.util.Random;
 import java.util.Set;

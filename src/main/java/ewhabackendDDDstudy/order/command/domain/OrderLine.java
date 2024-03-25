@@ -1,6 +1,8 @@
 package ewhabackendDDDstudy.order.command.domain;
 
 
+import ewhabackendDDDstudy.common.model.Money;
+
 // 주문항목
 public class OrderLine {
     private Product product;

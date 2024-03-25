@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
+// @Subselect를 이용해서 @Entity를 매핑한 예
+// @Immutable, @Subselect, @Synchronize는 하이버네이트 전용 어노테이션이다.
+// 이 태그를 사용하면 테이블이 아닌 쿼리 결과를 @Entity로 매핑할 수 있다.
 @Entity
 @Immutable
 @Subselect(

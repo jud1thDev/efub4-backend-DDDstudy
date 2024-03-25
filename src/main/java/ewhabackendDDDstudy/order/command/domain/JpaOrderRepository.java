@@ -1,7 +1,5 @@
-package ewhabackendDDDstudy.Repository;
+package ewhabackendDDDstudy.order.command.domain;
 
-import ewhabackendDDDstudy.order.command.domain.Order;
-import ewhabackendDDDstudy.order.command.domain.OrderNo;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;

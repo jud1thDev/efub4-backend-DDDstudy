@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.Repository;
+package ewhabackendDDDstudy.order.command.domain;
 import ewhabackendDDDstudy.order.command.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -32,8 +32,12 @@ public interface OrderSummaryDao extends Repository<OrderSummary, String> {
 
     Page<OrderSummary> findAll(Pageable pageable);
 
+//    JPQL에서 동적 인스턴스를 사용한 코드
+//    select절을 보면 new 키워드가 있다.
+//    new 키워드 뒤에 생성할 인스턴스의 클래스 이름(여기선 OrderView)을 지정하고,
+//    괄호 안에 생성자에 인자로 전달할 값을 지정한다.
     @Query("""    
-            select new com.myshop.order.query.dto.OrderView(
+            select new ewhabackendDDDstudy.order.query.dto.OrderView(
                 o.number, o.state, m.name, m.id, p.name
             )
             from Order o join o.orderLines ol, Member m, Product p

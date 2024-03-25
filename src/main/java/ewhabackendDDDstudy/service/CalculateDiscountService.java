@@ -1,9 +1,9 @@
 package ewhabackendDDDstudy.service;
 
 import ewhabackendDDDstudy.Repository.CustomerRepository;
-import ewhabackendDDDstudy.domain.Customer;
-import ewhabackendDDDstudy.domain.Money;
-import ewhabackendDDDstudy.order.OrderLine;
+import ewhabackendDDDstudy.order.command.domain.Customer;
+import ewhabackendDDDstudy.order.command.domain.Money;
+import ewhabackendDDDstudy.order.command.domain.OrderLine;
 
 import java.util.List;
 

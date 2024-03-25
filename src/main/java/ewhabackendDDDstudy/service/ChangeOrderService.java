@@ -1,14 +1,12 @@
 package ewhabackendDDDstudy.service;
 
 import ewhabackendDDDstudy.Repository.OrderRepository;
-import ewhabackendDDDstudy.domain.ShippingInfo;
-import ewhabackendDDDstudy.order.Order;
-import ewhabackendDDDstudy.order.OrderNo;
-import jakarta.persistence.TypedQuery;
+import ewhabackendDDDstudy.order.command.domain.ShippingInfo;
+import ewhabackendDDDstudy.order.command.domain.Order;
+import ewhabackendDDDstudy.order.command.domain.OrderNo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 import java.util.Optional;
 
 public class ChangeOrderService {

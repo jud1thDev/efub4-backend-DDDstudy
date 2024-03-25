@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order.command.domain;
 
 import java.util.List;
 import java.util.Set;

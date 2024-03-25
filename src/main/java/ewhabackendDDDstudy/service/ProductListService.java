@@ -2,8 +2,8 @@ package ewhabackendDDDstudy.service;
 
 import ewhabackendDDDstudy.Repository.CategoryRepository;
 import ewhabackendDDDstudy.Repository.ProductRepository;
-import ewhabackendDDDstudy.domain.Category;
-import ewhabackendDDDstudy.domain.Product;
+import ewhabackendDDDstudy.order.command.domain.Category;
+import ewhabackendDDDstudy.order.command.domain.Product;
 import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 

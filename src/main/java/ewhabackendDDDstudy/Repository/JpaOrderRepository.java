@@ -1,13 +1,11 @@
 package ewhabackendDDDstudy.Repository;
 
-import jakarta.persistence.Entity;
+import ewhabackendDDDstudy.order.command.domain.Order;
+import ewhabackendDDDstudy.order.command.domain.OrderNo;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-
-import ewhabackendDDDstudy.domain.*;
-import ewhabackendDDDstudy.order.*;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
-package ewhabackendDDDstudy.order;
+package ewhabackendDDDstudy.order.command.domain;
 
-import ewhabackendDDDstudy.domain.*;
 import jakarta.persistence.Entity;
 
 import java.util.List;

@@ -1,6 +1,4 @@
-package ewhabackendDDDstudy.order;
-
-import ewhabackendDDDstudy.domain.*;
+package ewhabackendDDDstudy.order.command.domain;
 
 
 // 주문항목

@@ -1,6 +1,4 @@
-package ewhabackendDDDstudy.order;
-
-import ewhabackendDDDstudy.domain.Money;
+package ewhabackendDDDstudy.order.command.domain;
 
 import java.util.List;
 

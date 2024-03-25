@@ -1,6 +1,6 @@
 package ewhabackendDDDstudy.Repository;
 
-import ewhabackendDDDstudy.domain.Category;
+import ewhabackendDDDstudy.order.command.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

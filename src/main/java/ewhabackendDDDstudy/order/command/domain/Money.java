@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order.command.domain;
 
 // 이전 코드에선 Orderline의 price, amounts가 int를 사용하고 있었다.
 // 돈을 의미하는 Money 타입을 만들어 코드 이해를 더 명확히 돕자.

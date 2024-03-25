@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order.command.domain;
 
 public class Address {
     // 주소

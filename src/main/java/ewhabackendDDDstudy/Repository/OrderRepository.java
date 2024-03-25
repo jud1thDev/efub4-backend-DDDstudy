@@ -1,11 +1,9 @@
 package ewhabackendDDDstudy.Repository;
 
-import ewhabackendDDDstudy.order.Order;
-import ewhabackendDDDstudy.order.OrderNo;
-import jakarta.persistence.TypedQuery;
+import ewhabackendDDDstudy.order.command.domain.Order;
+import ewhabackendDDDstudy.order.command.domain.OrderNo;
 import org.springframework.data.repository.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 // 지정된 규칙은 다음과 같다.

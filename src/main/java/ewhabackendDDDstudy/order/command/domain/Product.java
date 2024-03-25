@@ -1,4 +1,4 @@
-package ewhabackendDDDstudy.domain;
+package ewhabackendDDDstudy.order.command.domain;
 
 import jakarta.persistence.*;
 
